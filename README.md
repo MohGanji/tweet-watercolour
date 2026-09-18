@@ -52,6 +52,14 @@ actual mix printed underneath.
 
 Wash intensity is a slider in the popup.
 
+This is a **separate extension** from Pitch Dimmer, not an update to it: its own folder, its
+own Chrome entry, its own API key field, its own icon (four overlapping palette washes rather
+than the blue robot). Load unpacked again for this folder.
+
+Both match `https://x.com/*`, so if both are enabled they run together. Nothing breaks, but a
+tweet the dimmer flags as selling gets dropped to 25% opacity, which fades its wash along with
+everything else. If the washes look muddy, that is usually the other extension — untick one.
+
 ## How the wash is built
 
 Two layers, both seeded from the tweet id so a tweet looks identical every time it scrolls back:
