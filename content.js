@@ -12,7 +12,7 @@
   };
 
   let enabled = true;
-  let intensity = 1;
+  let intensity = 0.45;
   let debug = true;
 
   const log = (...a) => { if (debug) console.log('%c[hue]', 'color:#841bb9;font-weight:600', ...a); };
@@ -72,14 +72,17 @@
   function washCss(id, layers) {
     const r = rng(hash(id));
     const angle = Math.floor(r() * 360);
-    const peak = Math.min(0.62, 0.16 + 0.5 * intensity);
+    // Strictly proportional to the slider. The first version was `0.16 + 0.5 * intensity`,
+    // whose 0.16 floor meant the minimum setting still painted at alpha 0.31 -- the slider
+    // could never actually get out of the way. At intensity 0.1 this is alpha 0.03.
+    const peak = Math.min(0.62, 0.30 * intensity);
 
     // Spectrum: each colour takes a share of the sweep proportional to its weight.
     const stops = [];
     let at = 0;
     layers.forEach(({ hex, weight }, i) => {
       const span = weight * 100;
-      const a = peak * (0.55 + 0.45 * weight);
+      const a = peak * (0.5 + 0.5 * weight);
       if (i === 0) stops.push(`${rgba(hex, a)} 0%`);
       stops.push(`${rgba(hex, a)} ${(at + span / 2).toFixed(1)}%`);
       at += span;
@@ -93,7 +96,9 @@
       const y = 10 + r() * 80;
       const w = 90 + r() * 90;
       const h = 220 + r() * 260;
-      const a = Math.min(0.55, peak * weight * 0.9);
+      // Blooms sit on top of the spectrum, so their alpha compounds with it. Kept well under
+      // the spectrum's so a bloom adds mottling rather than a second full-strength layer.
+      const a = Math.min(0.55, peak * weight * 0.55);
       return `radial-gradient(ellipse ${w.toFixed(0)}% ${h.toFixed(0)}% at ${x.toFixed(0)}% ${y.toFixed(0)}%, ` +
              `${rgba(hex, a)} 0%, ${rgba(hex, a * 0.4)} 45%, ${rgba(hex, 0)} 80%)`;
     });
@@ -117,7 +122,7 @@
     document.querySelectorAll('[data-jev-hue]').forEach((el) => delete el.dataset.jevHue);
   }
 
-  chrome.storage.local.get({ enabled: true, intensity: 1, debug: true, apiKey: '' }).then((s) => {
+  chrome.storage.local.get({ enabled: true, intensity: 0.45, debug: true, apiKey: '' }).then((s) => {
     enabled = s.enabled; intensity = s.intensity; debug = s.debug;
     log(`active — batch ${CFG.batchSize}, queue ${CFG.maxQueue}, intensity ${intensity}`);
     if (!s.apiKey) warn('no API key set — open the extension popup and paste your Vercel AI Gateway key');
