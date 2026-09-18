@@ -1,7 +1,7 @@
 import { PALETTE } from './palette.js';
 
 const $ = (id) => document.getElementById(id);
-const DEFAULTS = { apiKey: '', enabled: true, debug: true, intensity: 0.45, statPainted: 0, statCost: 0 };
+const DEFAULTS = { apiKey: '', enabled: true, debug: true, intensity: 0.60, statPainted: 0, statCost: 0 };
 
 $('swatches').innerHTML = Object.values(PALETTE)
   .map((hex) => `<i style="background:${hex}" title="${hex}"></i>`).join('');

@@ -16,8 +16,8 @@ const DATA = [
   ['boxofphotos', "found a shoebox of disposable camera photos from 2003. everyone looks so young and the colours are all wrong.", [['indigo',0.38],['light pink',0.30],['brown',0.19],['orange',0.13]]],
 ];
 
-const LEVELS = [0.10, 0.20, 0.30, 0.45, 0.70];
-const DEFAULT = 0.45;
+const LEVELS = [0.20, 0.30, 0.45, 0.60, 0.80];
+const DEFAULT = 0.60;
 
 const hash = (s) => { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; };
 const rng = (seed) => () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; };

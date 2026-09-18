@@ -12,7 +12,7 @@
   };
 
   let enabled = true;
-  let intensity = 0.45;
+  let intensity = 0.60;
   let debug = true;
 
   const log = (...a) => { if (debug) console.log('%c[hue]', 'color:#841bb9;font-weight:600', ...a); };
@@ -122,7 +122,7 @@
     document.querySelectorAll('[data-jev-hue]').forEach((el) => delete el.dataset.jevHue);
   }
 
-  chrome.storage.local.get({ enabled: true, intensity: 0.45, debug: true, apiKey: '' }).then((s) => {
+  chrome.storage.local.get({ enabled: true, intensity: 0.60, debug: true, apiKey: '' }).then((s) => {
     enabled = s.enabled; intensity = s.intensity; debug = s.debug;
     log(`active — batch ${CFG.batchSize}, queue ${CFG.maxQueue}, intensity ${intensity}`);
     if (!s.apiKey) warn('no API key set — open the extension popup and paste your Vercel AI Gateway key');
