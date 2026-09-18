@@ -1,0 +1,14 @@
+/* The washes themselves are injected per tweet as their own rules, because every tweet has a
+   different colour mix. This file only has to make them visible and pleasant. */
+
+article[data-jev-hue] {
+  transition: background-image 600ms ease-out;
+  border-radius: 12px;
+}
+
+/* Twitter paints solid backgrounds on the wrappers inside a tweet, which would sit on top of
+   the wash and hide it. Let it show through. */
+article[data-jev-hue] > div,
+article[data-jev-hue] > div > div {
+  background-color: transparent !important;
+}

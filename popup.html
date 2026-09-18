@@ -1,0 +1,53 @@
+<!doctype html>
+<meta charset="utf-8">
+<style>
+  body { width: 290px; margin: 0; padding: 14px; font: 13px/1.5 -apple-system, system-ui, sans-serif; }
+  h1 { font-size: 13px; margin: 0 0 10px; font-weight: 600; }
+  label.cap { display: flex; align-items: baseline; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: #666; margin-bottom: 4px; }
+  input[type=password] { width: 100%; box-sizing: border-box; padding: 6px 8px; font: 12px ui-monospace, monospace; border: 1px solid #ccc; border-radius: 6px; }
+  .toggles { margin-top: 12px; display: grid; gap: 6px; }
+  .toggles label { display: flex; align-items: center; gap: 7px; cursor: pointer; }
+  .hint { color: #888; font-size: 11px; margin-left: auto; }
+  .slider { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
+  .slider input { flex: 1; }
+  .val { font: 11px ui-monospace, monospace; color: #666; width: 30px; text-align: right; }
+  .row { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+  .stats { margin-top: 12px; padding-top: 10px; border-top: 1px solid #eee; color: #666; font-size: 12px; display: flex; justify-content: space-between; }
+  button { padding: 6px 10px; border: 1px solid #ccc; background: #f6f6f6; border-radius: 6px; cursor: pointer; font-size: 12px; }
+  #saved { color: #0a0; font-size: 11px; opacity: 0; transition: opacity .2s; }
+  #saved.on { opacity: 1; }
+  .swatches { display: flex; gap: 2px; margin-top: 10px; }
+  .swatches i { flex: 1; height: 8px; border-radius: 2px; }
+</style>
+<h1>🎨 Tweet Watercolour</h1>
+
+<label class="cap" for="key">Vercel AI Gateway key</label>
+<input id="key" type="password" placeholder="vck_...">
+
+<div class="toggles">
+  <label><input type="checkbox" id="enabled"> Enabled</label>
+</div>
+
+<label class="cap" style="margin-top:12px">Wash intensity</label>
+<div class="slider">
+  <input type="range" id="intensity" min="0.3" max="2" step="0.1">
+  <span class="val" id="intensityVal">1.0</span>
+</div>
+
+<div class="toggles">
+  <label><input type="checkbox" id="debug"> Console logging <span class="hint">page devtools</span></label>
+</div>
+
+<div class="row">
+  <button id="save">Save key</button>
+  <span id="saved">saved</span>
+</div>
+
+<div class="swatches" id="swatches"></div>
+
+<div class="stats">
+  <span><b id="painted">0</b> tweets painted</span>
+  <span>$<b id="cost">0.0000</b></span>
+</div>
+
+<script type="module" src="popup.js"></script>
