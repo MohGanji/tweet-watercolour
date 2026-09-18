@@ -1,10 +1,8 @@
 # Tweet Watercolour (Jev)
 
-https://github.com/MohGanji/tweet-watercolour/raw/main/docs/demo.mp4
+[![Tweet Watercolour — click to play](docs/demo-poster.jpg)](docs/demo.mp4)
 
-<video src="https://github.com/MohGanji/tweet-watercolour/raw/main/docs/demo.mp4"
-       poster="https://raw.githubusercontent.com/MohGanji/tweet-watercolour/main/docs/demo-poster.jpg"
-       controls muted playsinline width="100%"></video>
+<sup>▶ **[Play the 61-second demo](docs/demo.mp4)** — a live timeline, washed as it scrolls.</sup>
 
 Chrome extension that paints every tweet with a watercolour wash mixed from the mood of its
 words. Colours come from the [Bitframes](https://github.com/mattdesl/bitframes) palette `0x00`;
