@@ -1,4 +1,4 @@
-# Tweet Watercolour (Jev)
+# Paint your timeline in realtime with jev
 
 [![Tweet Watercolour — click to play](docs/demo-poster.jpg)](docs/demo.mp4)
 
@@ -9,7 +9,8 @@ words. Colours come from the [Bitframes](https://github.com/mattdesl/bitframes) 
 the mixing comes from [TypeSafe AI's Jev](https://vercel.com/ai-gateway/models/jev) via the
 Vercel AI Gateway. No account, no build step, no dependencies.
 
-Not useful. That is the point.
+**$17 per million tweets.** Measured, not estimated: nine tweets come back in a single 622ms
+call costing $0.000153. A heavy month of scrolling runs about 15 cents.
 
 ## The idea
 
@@ -103,7 +104,3 @@ One bug worth recording: the cap used to evict the oldest tweet even when it was
 screen, and because it stayed intersecting no further IntersectionObserver event ever fired to
 re-enqueue it — it sat blank permanently. `pump()` now tops the queue up from whatever is
 visible and unpainted.
-
-## Cost
-
-About $0.00002 per tweet. A long scrolling session is a fraction of a cent.
